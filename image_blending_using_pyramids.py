@@ -12,14 +12,14 @@ apple_orange = np.hstack((apple[:, :256], orange[:, 256:]))
 # generate Gaussian pyramid for apple
 apple_copy = apple.copy()
 gp_apple = [apple_copy]
-for i in range(6):
+for _ in range(6):
     apple_copy = cv2.pyrDown(apple_copy)
     gp_apple.append(apple_copy)
 
 # generate Gaussian pyramid for orange
 orange_copy = orange.copy()
 gp_orange = [orange_copy]
-for i in range(6):
+for _ in range(6):
     orange_copy = cv2.pyrDown(orange_copy)
     gp_orange.append(orange_copy)
 
@@ -41,9 +41,7 @@ for i in range(5, 0, -1):
 
 # add left and right halves of images in each level
 apple_orange_pyramid = []
-n = 0
-for apple_lap, orange_lap in zip(lp_apple, lp_orange):
-    n+=1
+for n, (apple_lap, orange_lap) in enumerate(zip(lp_apple, lp_orange)):
     cols, rows, ch = apple_lap.shape
     laplacian = np.hstack((apple_lap[:, 0:int(cols/2)], orange_lap[:, int(cols/2):]))
     apple_orange_pyramid.append(laplacian)
