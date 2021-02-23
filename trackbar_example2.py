@@ -11,7 +11,7 @@ cv2.createTrackbar('CP', 'image', 10, 400, nothing)
 switch = 'color/gray'
 cv2.createTrackbar(switch, 'image', 0, 1, nothing)
 
-while(1):
+while 1:
     img = cv2.imread('lena.jpg')
     pos = cv2.getTrackbarPos('CP', 'image')
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -23,9 +23,7 @@ while(1):
 
     s = cv2.getTrackbarPos(switch, 'image')
 
-    if s == 0:
-        pass
-    else:
+    if s != 0:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     cv2.imshow('image', img)

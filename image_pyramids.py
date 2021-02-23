@@ -6,7 +6,7 @@ img = cv2.imread('lena.jpg')
 layer = img.copy()
 gp = [layer]
 
-for i in range(6):
+for _ in range(6):
     layer = cv2.pyrDown(layer)
     gp.append(layer)
     #cv2.imshow(str(i), layer)

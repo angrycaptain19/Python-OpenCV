@@ -7,8 +7,7 @@ def ROI(img, vertices):
     #channel_count = img.shape[2]
     match_mask_color = 255
     cv2.fillPoly(mask, vertices, match_mask_color)
-    masked_image = cv2.bitwise_and(img, mask)
-    return masked_image
+    return cv2.bitwise_and(img, mask)
 
 def drow_the_lines(img, lines):
     img = np.copy(img)
